@@ -6,7 +6,7 @@ module Brightcove
   class API
     include HTTParty
     
-    VERSION = '1.0.4'.freeze
+    VERSION = '1.0.6'.freeze
     
     DEFAULT_HEADERS = {
       'User-Agent' => "brightcove-api gem #{VERSION}"
@@ -39,6 +39,10 @@ module Brightcove
     def set_http_headers(http_headers = {})
       http_headers.merge!(DEFAULT_HEADERS)
       headers(http_headers)
+    end
+    
+    def set_timeout(timeout)
+      default_timeout(timeout)
     end
     
     # Call Brightcove using a particular API method, api_method. The options hash is where you can add any parameters appropriate for the API call.

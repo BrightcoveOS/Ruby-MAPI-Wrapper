@@ -12,7 +12,7 @@ class TestBrightcoveApi < Test::Unit::TestCase
   end
   
   def test_api_version
-    assert_equal '1.0.4', Brightcove::API::VERSION
+    assert_equal '1.0.6', Brightcove::API::VERSION
   end
   
   def test_can_set_read_api_url
@@ -46,6 +46,13 @@ class TestBrightcoveApi < Test::Unit::TestCase
     brightcove.expects(:headers).at_least_once
     
     brightcove.set_http_headers({'Accept' => 'application/json'})
+  end
+  
+  def test_can_set_timeout
+    brightcove = Brightcove::API.new('apikeytoken')
+    brightcove.expects(:default_timeout).at_least_once
+    
+    brightcove.set_timeout(5)
   end
   
   def test_find_all_videos
