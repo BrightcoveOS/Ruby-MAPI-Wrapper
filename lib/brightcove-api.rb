@@ -1,6 +1,7 @@
 require 'httparty'
 require 'json'
 require 'rest-client'
+require 'orderedhash'
 
 module Brightcove
   class API
@@ -49,10 +50,9 @@ module Brightcove
     def get(api_method, options = {})
       options.merge!({:command => api_method})
       options.merge!({:token => @token})
-
       query = {}
       query.merge!({:query => options})
-            
+
       self.class.get(@read_api_url, query)
     end
     
@@ -73,11 +73,16 @@ module Brightcove
       body = {}
       body.merge!({:method => api_method})          
       body.merge!({:params => parameters})
+      
+      if RUBY_VERSION >= '1.9'
+        payload = {}
+      else
+        payload = OrderedHash.new
+        
+      payload[:json] = body.to_json
+      payload[:file] = File.new(file, 'rb')
           
-      response = RestClient.post(@write_api_url, {
-        :json => body.to_json,
-        :file => File.new(file, 'rb')
-      }, :content_type => :json, :accept => :json, :multipart => true)
+      response = RestClient.post(@write_api_url, payload, :content_type => :json, :accept => :json, :multipart => true)
       
       JSON.parse(response)
     end

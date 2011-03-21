@@ -88,7 +88,7 @@ class TestBrightcoveApi < Test::Unit::TestCase
                          :content_type => "application/json")
 
     brightcove = Brightcove::API.new('0Z2dtxTdJAxtbZ-d0U7Bhio2V1Rhr5Iafl5FFtDPY8E.')
-    brightcove_response = brightcove.post_file('delete_video', 
+    brightcove_response = brightcove.post_file('create_video', 
       File.join(File.dirname(__FILE__), 'fakeweb', 'movie.mov'), 
       :video => {:shortDescription => "Short Description", :name => "Video"})
 
