@@ -74,11 +74,14 @@ module Brightcove
       body.merge!({:method => api_method})          
       body.merge!({:params => parameters})
       
+      # Brightcove requires that the JSON-RPC call absolutely
+      # be the first part of a multi-part POST like create_video.
       if RUBY_VERSION >= '1.9'
         payload = {}
       else
         payload = OrderedHash.new
-        
+      end
+      
       payload[:json] = body.to_json
       payload[:file] = File.new(file, 'rb')
           
