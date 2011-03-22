@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{brightcove-api}
-  s.version = "1.0.6"
+  s.version = "1.0.7"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["David Czarnecki"]
-  s.date = %q{2011-02-16}
+  s.date = %q{2011-03-21}
   s.description = %q{Ruby gem for interacting with the Brightcove media API. http://docs.brightcove.com/en/media/}
   s.email = %q{dczarnecki@agoragames.com}
   s.extra_rdoc_files = [
@@ -58,7 +58,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<httparty>, ["~> 0.6.1"])
       s.add_dependency(%q<json>, ["~> 1.4.6"])
       s.add_dependency(%q<rest-client>, ["~> 1.6.1"])
-      s.add_dependency(%q<orderedhash>, ["~> 0.0.6"])      
+      s.add_dependency(%q<orderedhash>, ["~> 0.0.6"])
       s.add_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.5.1"])
       s.add_dependency(%q<rcov>, ["~> 0.9.9"])

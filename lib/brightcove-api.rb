@@ -7,7 +7,7 @@ module Brightcove
   class API
     include HTTParty
     
-    VERSION = '1.0.6'.freeze
+    VERSION = '1.0.7'.freeze
     
     DEFAULT_HEADERS = {
       'User-Agent' => "brightcove-api gem #{VERSION}"
