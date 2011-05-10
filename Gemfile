@@ -11,7 +11,7 @@ group :test do
 	gem 'mocha'
 end
 
-gem 'httparty', "~> 0.6.1"
+gem 'httparty', "~> 0.7.7"
 gem 'json', "~> 1.4.6"
 gem 'rest-client', "~> 1.6.1"
 gem 'orderedhash', "~> 0.0.6"
