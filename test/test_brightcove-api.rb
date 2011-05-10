@@ -101,17 +101,11 @@ class TestBrightcoveApi < Test::Unit::TestCase
 
   def test_brightcove_example_query
     FakeWeb.register_uri(:get,
-                         'http://api.brightcove.com/services/library?all=chicago&all=football&all=tag%3Afree&any=tag%3Acolor&any=tag%3Atechnicolor&command=search_videos&token=1234.',
+                         'http://api.brightcove.com/services/library?all=chicago&all=football&all=tag%3Afree&any=tag%3Acolor&any=tag%3Atechnicolor&command=search_videos&token=0Z2dtxTdJAxtbZ-d0U7Bhio2V1Rhr5Iafl5FFtDPY8E.',
                          :body => File.join(File.dirname(__FILE__), 'fakeweb', 'find_all_videos_response.json'),
                          :content_type => "application/json")
 
-    brightcove = Brightcove::API.new('1234.')
-    # brightcove.class.expects(:get).with(anything, has_entry(:query => {
-    #   :any => ['tag:color', 'tag:technicolor'],
-    #   :all => ['football', 'chicago', 'tag:free'],
-    #   :command => 'search_videos',
-    #   :token => '1234.'
-    # }))
+    brightcove = Brightcove::API.new('0Z2dtxTdJAxtbZ-d0U7Bhio2V1Rhr5Iafl5FFtDPY8E.')
     brightcove_response = brightcove.get('search_videos', {
       :any => [ "tag:color", "tag:technicolor" ],
       :all => ["football", "chicago", "tag:free"]
