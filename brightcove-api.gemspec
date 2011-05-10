@@ -35,7 +35,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/BrightcoveOS/Ruby-MAPI-Wrapper}
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.6.2}
+  s.rubygems_version = %q{1.7.2}
   s.summary = %q{Ruby gem for interacting with the Brightcove media API}
   s.test_files = [
     "test/helper.rb",
