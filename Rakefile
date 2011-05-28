@@ -36,8 +36,6 @@ Rcov::RcovTask.new do |test|
   test.verbose = true
 end
 
-task :default => :test
-
 require 'rake/rdoctask'
 Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""
@@ -48,6 +46,8 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
 
+task :default => :test_rubies
+
 task :test_rubies do
-  system "rvm 1.8.7,1.9.2 rake test"
+  system "rvm 1.8.7@brightcove-api_gem,1.9.2@brightcove-api_gem rake test"
 end
