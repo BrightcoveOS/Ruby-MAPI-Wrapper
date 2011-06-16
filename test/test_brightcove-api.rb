@@ -124,7 +124,7 @@ class TestBrightcoveApi < Test::Unit::TestCase
     brightcove_response = brightcove.post('delete_video', {:video_id => '595153261337'})
 
     assert brightcove_response.has_key?('result')
-    assert_equal brightcove_response['error'], 'nil'
+    assert_equal brightcove_response['error'], nil
   end
 
   def test_create_video_using_post_file
