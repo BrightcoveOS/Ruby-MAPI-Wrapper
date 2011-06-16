@@ -22,6 +22,11 @@ module Brightcove
     attr_accessor :read_api_url
     attr_accessor :write_api_url
     attr_accessor :token
+    
+    # RestClient POST timeout for reading conection
+    attr_accessor :timeout
+    # RestClient POST timeout for opening connection
+    attr_accessor :open_timeout
 
     # Brightcove returns text/html as the Content-Type for a response even though the response is JSON.
     # So, let's just parse the response as JSON
@@ -93,7 +98,16 @@ module Brightcove
       payload[:json] = body.to_json
       payload[:file] = File.new(file, 'rb')
 
-      response = RestClient.post(@write_api_url, payload, :content_type => :json, :accept => :json, :multipart => true)
+      response = RestClient::Request.execute(
+        :method => :post,
+        :url => @write_api_url,
+        :payload => payload,
+        :content_type => :json,
+        :accept => :json,
+        :multipart => true,
+        :timeout => @timeout,
+        :open_timeout => @open_timeout
+      )
 
       JSON.parse(response)
     end
