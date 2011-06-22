@@ -1,3 +1,7 @@
+# 1.0.8 (2011-06-22)
+
+ * Added `post_file_streaming` method 
+ 
 # 1.0.7 (2011-03-21)
 
  * Allow for hash to be ordered when using the create_video call under Ruby 1.8.7

@@ -2,6 +2,7 @@ require 'httparty'
 require 'json'
 require 'rest-client'
 require 'orderedhash'
+require 'net/http/post/multipart'
 
 module Brightcove
   class API
@@ -110,6 +111,31 @@ module Brightcove
       )
 
       JSON.parse(response)
+    end
+    
+    def post_file_streaming(api_method, upload_file, content_type, parameters)
+      parameters.merge!({"token" => @token})
+
+      body = {}
+      body.merge!({:method => api_method})
+      body.merge!({:params => parameters})
+
+      url = URI.parse(@write_api_url)
+      response = nil
+      File.open(upload_file) do |file|
+        request = Net::HTTP::Post::Multipart.new(
+        url.path,
+        {
+          :json => body.to_json,
+          :file => UploadIO.new(file, content_type)
+        })
+        
+        response = Net::HTTP.start(url.host, url.port) do |http|
+          http.request(request)
+        end
+      end
+
+      JSON.parse(response.body)
     end
   end
 end
