@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{brightcove-api}
-  s.version = "1.0.8"
+  s.version = "1.0.9"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["David Czarnecki"]
-  s.date = %q{2011-05-10}
+  s.date = %q{2011-06-22}
   s.description = %q{Ruby gem for interacting with the Brightcove media API. http://docs.brightcove.com/en/media/}
   s.email = %q{dczarnecki@agoragames.com}
   s.extra_rdoc_files = [
@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
     "README.md"
   ]
   s.files = [
+    ".rvmrc",
     "CHANELOG.markdown",
     "Gemfile",
     "LICENSE",
@@ -35,7 +36,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/BrightcoveOS/Ruby-MAPI-Wrapper}
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.7.2}
+  s.rubygems_version = %q{1.5.3}
   s.summary = %q{Ruby gem for interacting with the Brightcove media API}
   s.test_files = [
     "test/helper.rb",
@@ -49,6 +50,7 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<httparty>, ["~> 0.7.7"])
       s.add_runtime_dependency(%q<json>, ["~> 1.4.6"])
       s.add_runtime_dependency(%q<rest-client>, ["~> 1.6.1"])
+      s.add_runtime_dependency(%q<multipart-post>, ["~> 1.1.2"])
       s.add_runtime_dependency(%q<orderedhash>, ["~> 0.0.6"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.5.1"])
@@ -57,6 +59,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<httparty>, ["~> 0.7.7"])
       s.add_dependency(%q<json>, ["~> 1.4.6"])
       s.add_dependency(%q<rest-client>, ["~> 1.6.1"])
+      s.add_dependency(%q<multipart-post>, ["~> 1.1.2"])
       s.add_dependency(%q<orderedhash>, ["~> 0.0.6"])
       s.add_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.5.1"])
@@ -66,6 +69,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<httparty>, ["~> 0.7.7"])
     s.add_dependency(%q<json>, ["~> 1.4.6"])
     s.add_dependency(%q<rest-client>, ["~> 1.6.1"])
+    s.add_dependency(%q<multipart-post>, ["~> 1.1.2"])
     s.add_dependency(%q<orderedhash>, ["~> 0.0.6"])
     s.add_dependency(%q<bundler>, ["~> 1.0.0"])
     s.add_dependency(%q<jeweler>, ["~> 1.5.1"])

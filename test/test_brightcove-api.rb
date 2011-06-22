@@ -12,7 +12,7 @@ class TestBrightcoveApi < Test::Unit::TestCase
   end
 
   def test_api_version
-    assert_equal '1.0.8', Brightcove::API::VERSION
+    assert_equal '1.0.9', Brightcove::API::VERSION
   end
 
   def test_can_set_read_api_url

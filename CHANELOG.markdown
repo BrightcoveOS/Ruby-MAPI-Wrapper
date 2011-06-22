@@ -1,4 +1,4 @@
-# 1.0.8 (2011-06-22)
+# 1.0.9 (2011-06-22)
 
  * Added `post_file_streaming` method 
  
