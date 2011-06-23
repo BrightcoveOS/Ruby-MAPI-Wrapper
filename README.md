@@ -50,6 +50,11 @@ If you want to perform a file upload, for example, to create a video, you can us
     >> response = brightcove.post_file('create_video', '/path/to/video.mov', :video => {:shortDescription => 'Short Description', :name => 'Video name'})
     => {"result"=>653155417001, "error=>nil, "id"=>nil}
 
+If you want to perform a file upload using HTTP streaming, for example, to create a video, you can use the __post_file_streaming()__ method.
+
+    >> response = brightcove.post_file_streaming('create_video', '/path/to/video.mov', 'video/quicktime', :video => {:shortDescription => 'Short Description', :name => 'Video name'})
+    => {"result"=>653155417001, "error=>nil, "id"=>nil}
+
 Note on Patches/Pull Requests
 =============================
 

@@ -1,3 +1,7 @@
+# 1.0.10 (2011-06-22)
+
+ * Updated `post_file_streaming` method to support Ruby 1.8.7
+
 # 1.0.9 (2011-06-22)
 
  * Added `post_file_streaming` method 

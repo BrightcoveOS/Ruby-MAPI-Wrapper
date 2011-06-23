@@ -9,7 +9,7 @@ module Brightcove
     include HTTParty
     disable_rails_query_string_format
 
-    VERSION = '1.0.9'.freeze
+    VERSION = '1.0.10'.freeze
 
     DEFAULT_HEADERS = {
       'User-Agent' => "brightcove-api gem #{VERSION}"
@@ -120,15 +120,21 @@ module Brightcove
       body.merge!({:method => api_method})
       body.merge!({:params => parameters})
 
+      # Brightcove requires that the JSON-RPC call absolutely
+      # be the first part of a multi-part POST like create_video.
+      if RUBY_VERSION >= '1.9'
+        payload = {}
+      else
+        payload = OrderedHash.new
+      end
+            
       url = URI.parse(@write_api_url)
       response = nil
       File.open(upload_file) do |file|
-        request = Net::HTTP::Post::Multipart.new(
-        url.path,
-        {
-          :json => body.to_json,
-          :file => UploadIO.new(file, content_type)
-        })
+        payload[:json] = body.to_json
+        payload[:file] = UploadIO.new(file, content_type)
+        
+        request = Net::HTTP::Post::Multipart.new(url.path, payload)
         
         response = Net::HTTP.start(url.host, url.port) do |http|
           http.request(request)
