@@ -9,7 +9,7 @@ module Brightcove
     include HTTParty
     disable_rails_query_string_format
 
-    VERSION = '1.0.10'.freeze
+    VERSION = '1.0.11'.freeze
 
     DEFAULT_HEADERS = {
       'User-Agent' => "brightcove-api gem #{VERSION}"
@@ -28,10 +28,6 @@ module Brightcove
     attr_accessor :timeout
     # RestClient POST timeout for opening connection
     attr_accessor :open_timeout
-
-    # Brightcove returns text/html as the Content-Type for a response even though the response is JSON.
-    # So, let's just parse the response as JSON
-    format(:json)
 
     # Initialize with your API token
     def initialize(token, read_api_url = READ_API_URL, write_api_url = WRITE_API_URL)
@@ -58,7 +54,9 @@ module Brightcove
       unless options.respond_to?(:merge!)
         options = CGI.parse(options)
       end
+      
       options.merge!({:command => api_method, :token => @token})
+      options.merge!({:format => :xml}) if options.key?(:output) && 'mrss'.eql?(options[:output])
       { :query => options }
     end
 
@@ -98,17 +96,20 @@ module Brightcove
 
       payload[:json] = body.to_json
       payload[:file] = File.new(file, 'rb')
-
-      response = RestClient::Request.execute(
+      
+      execution_payload = {
         :method => :post,
         :url => @write_api_url,
         :payload => payload,
         :content_type => :json,
         :accept => :json,
-        :multipart => true,
-        :timeout => @timeout,
-        :open_timeout => @open_timeout
-      )
+        :multipart => true        
+      }
+      
+      execution_payload[:timeout] = @timeout if @timeout
+      execution_payload[:open_timeout] = @open_timeout if @open_timeout
+
+      response = RestClient::Request.execute(execution_payload)
 
       JSON.parse(response)
     end
@@ -137,6 +138,8 @@ module Brightcove
         request = Net::HTTP::Post::Multipart.new(url.path, payload)
         
         response = Net::HTTP.start(url.host, url.port) do |http|
+          http.read_timeout = @timeout if @timeout
+          http.open_timeout = @open_timeout if @open_timeout
           http.request(request)
         end
       end

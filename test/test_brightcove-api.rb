@@ -12,7 +12,7 @@ class TestBrightcoveApi < Test::Unit::TestCase
   end
 
   def test_api_version
-    assert_equal '1.0.10', Brightcove::API::VERSION
+    assert_equal '1.0.11', Brightcove::API::VERSION
   end
 
   def test_can_set_read_api_url
@@ -66,6 +66,18 @@ class TestBrightcoveApi < Test::Unit::TestCase
 
     assert_equal 5, brightcove_response['items'].size
     assert_equal 0, brightcove_response['page_number']
+  end
+
+  def test_find_all_videos_mrss
+    FakeWeb.register_uri(:get,
+                         'http://api.brightcove.com/services/library?command=find_all_videos&format=xml&output=mrss&token=0Z2dtxTdJAxtbZ-d0U7Bhio2V1Rhr5Iafl5FFtDPY8E.',
+                         :body => File.join(File.dirname(__FILE__), 'fakeweb', 'find_all_videos_response.xml'),
+                         :content_type => "application/xml")
+
+    brightcove = Brightcove::API.new('0Z2dtxTdJAxtbZ-d0U7Bhio2V1Rhr5Iafl5FFtDPY8E.')
+    brightcove_response = brightcove.get('find_all_videos', {:output => 'mrss'})
+
+    assert_equal 85, brightcove_response['rss']['channel']['item'].size
   end
 
   def test_search_with_array_params
