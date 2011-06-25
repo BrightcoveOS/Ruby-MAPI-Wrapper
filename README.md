@@ -55,6 +55,10 @@ If you want to perform a file upload using HTTP streaming, for example, to creat
     >> response = brightcove.post_file_streaming('create_video', '/path/to/video.mov', 'video/quicktime', :video => {:shortDescription => 'Short Description', :name => 'Video name'})
     => {"result"=>653155417001, "error=>nil, "id"=>nil}
 
+You can now pass `{:output => 'mrss'}` in the __get(...)__ method to return output in Media RSS format. Example:
+
+		>> response = brightcove.get('find_all_videos', {:output => 'mrss'})
+
 Note on Patches/Pull Requests
 =============================
 
