@@ -15,24 +15,8 @@ Install
 
 * sudo gem install brightcove-api
 
-Searching
-=========
-
-To replicate one of the brightcove search API examples:
-
-> find all videos that have "football" and "Chicago" in the name, short description, or long
-> description, and which also have the tag "free", and also have either the tag "color" or the
-> tag "technicolor"
-
-    >> brightcove = Brightcove::API.new(...)
-    >> response = brightcove.get('search_videos', {
-         :any => [ "tag:color", "tag:technicolor" ],
-         :all => ["football", "chicago", "tag:free"]
-       })
-
-
-Example
-=======
+Examples
+========
 
     >> require 'brightcove-api'
     => true
@@ -58,6 +42,21 @@ If you want to perform a file upload using HTTP streaming, for example, to creat
 You can now pass `{:output => 'mrss'}` in the __get(...)__ method to return output in Media RSS format. Example:
 
     >> response = brightcove.get('find_all_videos', {:output => 'mrss'})
+
+Searching
+=========
+
+To replicate one of the brightcove search API examples:
+
+> find all videos that have "football" and "Chicago" in the name, short description, or long
+> description, and which also have the tag "free", and also have either the tag "color" or the
+> tag "technicolor"
+
+    >> brightcove = Brightcove::API.new(...)
+    >> response = brightcove.get('search_videos', {
+         :any => [ "tag:color", "tag:technicolor" ],
+         :all => ["football", "chicago", "tag:free"]
+       })
 
 Note on Patches/Pull Requests
 =============================
