@@ -57,7 +57,7 @@ If you want to perform a file upload using HTTP streaming, for example, to creat
 
 You can now pass `{:output => 'mrss'}` in the __get(...)__ method to return output in Media RSS format. Example:
 
-		>> response = brightcove.get('find_all_videos', {:output => 'mrss'})
+    >> response = brightcove.get('find_all_videos', {:output => 'mrss'})
 
 Note on Patches/Pull Requests
 =============================
