@@ -34,6 +34,8 @@ module Brightcove
       @token = token
       @read_api_url = read_api_url
       @write_api_url = write_api_url
+      @timeout = nil
+      @open_timeout = nil
     end
 
     def debug(location = $stderr)
