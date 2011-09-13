@@ -1,7 +1,8 @@
-# 1.0.11 (in progress)
+# 1.0.11 (2011-09-13)
 
  * Only set `timeout` and `open_timeout` in `post_file(...)` and `post_file_streaming(...)` if they are set
  * Support output format in Media RSS for passing `:output => 'mrss'` in the options for the `get` method
+ * Remove explicit version dependencies from supporting libraries
 
 # 1.0.10 (2011-06-22)
 

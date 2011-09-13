@@ -7,8 +7,11 @@ Requirements
 ============
 
 * HTTParty
-* JSON
-* FakeWeb (only for testing)
+
+* JSON (for `post_file(...)` and `post_file_streaming(...) methods`)
+* rest-client (for the `post_file(...)` method)
+* multipart-post (for the `post_file_streaming(...) method`)
+* orderedhash (only if you're using Ruby 1.8.7)
 
 Install
 =======
