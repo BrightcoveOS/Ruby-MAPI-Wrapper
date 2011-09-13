@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{brightcove-api}
-  s.version = "1.0.10"
+  s.version = "1.0.11"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["David Czarnecki"]
-  s.date = %q{2011-06-22}
+  s.authors = [%q{David Czarnecki}]
+  s.date = %q{2011-09-13}
   s.description = %q{Ruby gem for interacting with the Brightcove media API. http://docs.brightcove.com/en/media/}
   s.email = %q{dczarnecki@agoragames.com}
   s.extra_rdoc_files = [
@@ -29,14 +29,15 @@ Gem::Specification.new do |s|
     "test/fakeweb/create_video_response.json",
     "test/fakeweb/delete_video_response.json",
     "test/fakeweb/find_all_videos_response.json",
+    "test/fakeweb/find_all_videos_response.xml",
     "test/fakeweb/movie.mov",
     "test/helper.rb",
     "test/test_brightcove-api.rb"
   ]
   s.homepage = %q{http://github.com/BrightcoveOS/Ruby-MAPI-Wrapper}
-  s.licenses = ["MIT"]
-  s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.6.2}
+  s.licenses = [%q{MIT}]
+  s.require_paths = [%q{lib}]
+  s.rubygems_version = %q{1.8.8}
   s.summary = %q{Ruby gem for interacting with the Brightcove media API}
   s.test_files = [
     "test/helper.rb",
@@ -47,30 +48,30 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<httparty>, ["~> 0.7.7"])
-      s.add_runtime_dependency(%q<json>, ["~> 1.4.6"])
-      s.add_runtime_dependency(%q<rest-client>, ["~> 1.6.1"])
-      s.add_runtime_dependency(%q<multipart-post>, ["~> 1.1.2"])
-      s.add_runtime_dependency(%q<orderedhash>, ["~> 0.0.6"])
+      s.add_runtime_dependency(%q<httparty>, [">= 0"])
+      s.add_runtime_dependency(%q<json>, [">= 0"])
+      s.add_runtime_dependency(%q<rest-client>, [">= 0"])
+      s.add_runtime_dependency(%q<multipart-post>, [">= 0"])
+      s.add_runtime_dependency(%q<orderedhash>, [">= 0"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.5.1"])
       s.add_development_dependency(%q<rcov>, ["~> 0.9.9"])
     else
-      s.add_dependency(%q<httparty>, ["~> 0.7.7"])
-      s.add_dependency(%q<json>, ["~> 1.4.6"])
-      s.add_dependency(%q<rest-client>, ["~> 1.6.1"])
-      s.add_dependency(%q<multipart-post>, ["~> 1.1.2"])
-      s.add_dependency(%q<orderedhash>, ["~> 0.0.6"])
+      s.add_dependency(%q<httparty>, [">= 0"])
+      s.add_dependency(%q<json>, [">= 0"])
+      s.add_dependency(%q<rest-client>, [">= 0"])
+      s.add_dependency(%q<multipart-post>, [">= 0"])
+      s.add_dependency(%q<orderedhash>, [">= 0"])
       s.add_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.5.1"])
       s.add_dependency(%q<rcov>, ["~> 0.9.9"])
     end
   else
-    s.add_dependency(%q<httparty>, ["~> 0.7.7"])
-    s.add_dependency(%q<json>, ["~> 1.4.6"])
-    s.add_dependency(%q<rest-client>, ["~> 1.6.1"])
-    s.add_dependency(%q<multipart-post>, ["~> 1.1.2"])
-    s.add_dependency(%q<orderedhash>, ["~> 0.0.6"])
+    s.add_dependency(%q<httparty>, [">= 0"])
+    s.add_dependency(%q<json>, [">= 0"])
+    s.add_dependency(%q<rest-client>, [">= 0"])
+    s.add_dependency(%q<multipart-post>, [">= 0"])
+    s.add_dependency(%q<orderedhash>, [">= 0"])
     s.add_dependency(%q<bundler>, ["~> 1.0.0"])
     s.add_dependency(%q<jeweler>, ["~> 1.5.1"])
     s.add_dependency(%q<rcov>, ["~> 0.9.9"])
