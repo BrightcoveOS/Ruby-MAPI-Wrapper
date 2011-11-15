@@ -9,7 +9,7 @@ module Brightcove
     include HTTParty
     disable_rails_query_string_format
 
-    VERSION = '1.0.11'.freeze
+    VERSION = '1.0.11'
 
     DEFAULT_HEADERS = {
       'User-Agent' => "brightcove-api gem #{VERSION}"
