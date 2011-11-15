@@ -3,13 +3,12 @@ require 'json'
 require 'rest-client'
 require 'orderedhash'
 require 'net/http/post/multipart'
+require 'brightcove-api-version'
 
 module Brightcove
   class API
     include HTTParty
     disable_rails_query_string_format
-
-    VERSION = '1.0.11'
 
     DEFAULT_HEADERS = {
       'User-Agent' => "brightcove-api gem #{VERSION}"

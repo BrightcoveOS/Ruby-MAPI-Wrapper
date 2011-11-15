@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
 
-require 'brightcove-api'
+require 'brightcove-api-version'
 
 Gem::Specification.new do |s|
   s.name        = "brightcove-api"
@@ -27,4 +27,5 @@ Gem::Specification.new do |s|
   
   s.add_development_dependency('fakeweb')
   s.add_development_dependency('mocha')
+  s.add_development_dependency('rake')
 end
