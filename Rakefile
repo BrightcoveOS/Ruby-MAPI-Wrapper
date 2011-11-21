@@ -12,5 +12,5 @@ end
 task :default => :test_rubies
 
 task :test_rubies do
-  system "rvm 1.8.7@brightcove-api_gem,1.9.2@brightcove-api_gem do rake test"
+  system "rvm 1.8.7@brightcove-api_gem,1.9.2@brightcove-api_gem,1.9.3@brightcove-api_gem do rake test"
 end

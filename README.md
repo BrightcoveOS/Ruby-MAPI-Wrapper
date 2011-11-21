@@ -61,6 +61,11 @@ To replicate one of the brightcove search API examples:
          :all => ["football", "chicago", "tag:free"]
        })
 
+Compatibility
+=============
+
+The brightcove-api gem is built and tested under Ruby 1.8.7, 1.9.2 and 1.9.3.
+
 Note on Patches/Pull Requests
 =============================
 
