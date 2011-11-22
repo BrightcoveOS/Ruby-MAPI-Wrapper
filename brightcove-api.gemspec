@@ -5,7 +5,7 @@ require 'brightcove-api-version'
 
 Gem::Specification.new do |s|
   s.name        = "brightcove-api"
-  s.version     = Brightcove::API::VERSION
+  s.version     = Brightcove::API::VERSION.dup
   s.authors     = ["David Czarnecki"]
   s.email       = ["dczarnecki@agoragames.com"]
   s.homepage    = "http://github.com/BrightcoveOS/Ruby-MAPI-Wrapper"
