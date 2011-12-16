@@ -3,7 +3,7 @@ require 'json'
 require 'rest-client'
 require 'orderedhash'
 require 'net/http/post/multipart'
-require 'brightcove-api-version'
+require 'brightcove-api/version'
 
 module Brightcove
   class API
