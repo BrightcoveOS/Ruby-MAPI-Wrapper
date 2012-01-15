@@ -79,4 +79,4 @@ Note on Patches/Pull Requests
 
 Copyright
 =========
-Copyright (c) 2010-2011 David Czarnecki. See LICENSE for details.
+Copyright (c) 2010-2012 David Czarnecki. See LICENSE for details.
