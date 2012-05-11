@@ -170,4 +170,21 @@ class TestBrightcoveApi < Test::Unit::TestCase
     assert_equal '653155417001', brightcove_response['result'].to_s
     assert_equal brightcove_response['error'], nil
   end
+  
+  def test_create_video_using_post_io_streaming
+    FakeWeb.register_uri(:post,
+                         'http://api.brightcove.com/services/post',
+                         :body => File.join(File.dirname(__FILE__), 'fakeweb', 'create_video_response.json'),
+                         :content_type => "application/json")
+
+    brightcove = Brightcove::API.new('0Z2dtxTdJAxtbZ-d0U7Bhio2V1Rhr5Iafl5FFtDPY8E.')
+    open(File.join(File.dirname(__FILE__), 'fakeweb', 'movie.mov')) do |io|
+      brightcove_response = brightcove.post_io_streaming('create_video', io, 'video/quicktime',
+        :video => {:shortDescription => "Short Description", :name => "Video"})
+        
+      assert brightcove_response.has_key?('result')
+      assert_equal '653155417001', brightcove_response['result'].to_s
+      assert_equal brightcove_response['error'], nil
+    end    
+  end
 end
