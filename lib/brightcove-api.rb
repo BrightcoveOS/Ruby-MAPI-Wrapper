@@ -116,6 +116,10 @@ module Brightcove
     end
     
     def post_file_streaming(api_method, upload_file, content_type, parameters)
+      File.open(upload_file) { |file| post_io_streaming(api_method, file, content_type, parameters) }
+    end
+    
+    def post_io_streaming(api_method, file, content_type, parameters)
       parameters.merge!({"token" => @token})
 
       body = {}
@@ -132,17 +136,16 @@ module Brightcove
             
       url = URI.parse(@write_api_url)
       response = nil
-      File.open(upload_file) do |file|
-        payload[:json] = body.to_json
-        payload[:file] = UploadIO.new(file, content_type)
-        
-        request = Net::HTTP::Post::Multipart.new(url.path, payload)
-        
-        response = Net::HTTP.start(url.host, url.port) do |http|
-          http.read_timeout = @timeout if @timeout
-          http.open_timeout = @open_timeout if @open_timeout
-          http.request(request)
-        end
+      
+      payload[:json] = body.to_json
+      payload[:file] = UploadIO.new(file, content_type)
+      
+      request = Net::HTTP::Post::Multipart.new(url.path, payload)
+      
+      response = Net::HTTP.start(url.host, url.port) do |http|
+        http.read_timeout = @timeout if @timeout
+        http.open_timeout = @open_timeout if @open_timeout
+        http.request(request)
       end
 
       JSON.parse(response.body)
