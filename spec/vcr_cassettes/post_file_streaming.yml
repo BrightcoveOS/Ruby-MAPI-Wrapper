@@ -1,0 +1,36 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://api.brightcove.com/services/post
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+      content-type:
+      - multipart/form-data; boundary=-----------RubyMultipartPost
+      content-length:
+      - '460'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json;charset=UTF-8
+      content-length:
+      - '104'
+      date:
+      - Mon, 14 May 2012 12:53:09 GMT
+      server:
+      - !binary ""
+    body:
+      encoding: US-ASCII
+      string: ! '{"result": 653155417001, "error": null, "id": null}'
+    http_version: '1.1'
+  recorded_at: Mon, 14 May 2012 12:53:10 GMT
+recorded_with: VCR 2.1.1
