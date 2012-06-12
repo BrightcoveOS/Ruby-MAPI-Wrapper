@@ -1,3 +1,7 @@
+# 1.0.12 (2012-06-12)
+
+* Allow post streaming when you have an file handle instead of a filename. Thanks @keysolutions
+
 # 1.0.11 (2011-09-13)
 
  * Only set `timeout` and `open_timeout` in `post_file(...)` and `post_file_streaming(...)` if they are set

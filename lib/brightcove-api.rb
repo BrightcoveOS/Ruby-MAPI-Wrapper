@@ -28,7 +28,11 @@ module Brightcove
     # RestClient POST timeout for opening connection
     attr_accessor :open_timeout
 
-    # Initialize with your API token
+    # Initialize a new instance of the +Brightcove::API+ using a Brightcove token.
+    #
+    # @param token [String] Brightcove token which can be a read-only, write or read-write token.
+    # @param read_api_url [String] Read API URL or the default of +Brightcove::API::READ_API_URL+.
+    # @param write_api_url [String] Write API URL or the default of +Brightcove::API::WRITE_API_URL+.
     def initialize(token, read_api_url = READ_API_URL, write_api_url = WRITE_API_URL)
       @token = token
       @read_api_url = read_api_url
@@ -37,39 +41,44 @@ module Brightcove
       @open_timeout = nil
     end
 
+    # Set a location for debug HTTP output to be written to.
+    # 
+    # @param location [Object] Defaults to +$stderr+.
     def debug(location = $stderr)
       self.class.debug_output(location)
     end
 
+    # Set HTTP headers that should be used in API requests. The 
+    # +Brightcove::API::DEFAULT_HEADERS+ will be merged into the passed-in
+    # hash.
+    #
+    # @param http_headers [Hash] Updated HTTP headers.
     def set_http_headers(http_headers = {})
       http_headers.merge!(DEFAULT_HEADERS)
       headers(http_headers)
     end
 
+    # Set a timeout for HTTP requests.
+    # 
+    # @param timeout [int] HTTP timeout value.
     def set_timeout(timeout)
       default_timeout(timeout)
     end
 
-    def build_query_from_options(api_method, options = {})
-      # normalize options to a hash
-      unless options.respond_to?(:merge!)
-        options = CGI.parse(options)
-      end
-      
-      options.merge!({:command => api_method, :token => @token})
-      options.merge!({:format => :xml}) if options.key?(:output) && 'mrss'.eql?(options[:output])
-      { :query => options }
-    end
-
-    # Call Brightcove using a particular API method, api_method.
-    # The options parameter can be either a query string or a hash. In either case, it is where
-    # you can add any parameters appropriate for the API call. If a query string, it will be
-    # normalized to a hash via CGI.parse.
+    # Make an HTTP GET call to the Brightcove API for a particular API method.
+    #
+    # @param api_method [String] Brightcove API method.
+    # @param options [Hash] Optional hash containing parameter names and values. The options 
+    #   parameter can be either a query string or a hash. If a query string, it will be
+    #   normalized to a hash via CGI.parse.
     def get(api_method, options = {})
       self.class.get(@read_api_url, build_query_from_options(api_method, options))
     end
 
-    # Post to Brightcove using a particular API method, api_method. The parameters hash is where you add all the required parameters appropriate for the API call.
+    # Make an HTTP POST call to the Brightcove API for a particular API method.
+    # 
+    # @param api_method [String] Brightcove API method.
+    # @param parameters [Hash] Optional hash containing parameter names and values.
     def post(api_method, parameters = {})
       parameters.merge!({"token" => @token})
 
@@ -80,6 +89,11 @@ module Brightcove
       self.class.post(@write_api_url, {:body => {:json => JSON.generate(body)}})
     end
 
+    # Post a file to the Brightcove API, e.g. uploading video. 
+    #
+    # @param api_method [String] Brightcove API method.
+    # @param file [String] Full path of file to be uploaded.
+    # @param parameters [Hash] Optional hash containing parameter names and values.
     def post_file(api_method, file, parameters = {})
       parameters.merge!({"token" => @token})
 
@@ -115,10 +129,20 @@ module Brightcove
       JSON.parse(response)
     end
     
+    # Post a file via HTTP streaming to the Brightcove API, e.g. uploading video. 
+    #
+    # @param api_method [String] Brightcove API method.
+    # @param upload_file [String] Full path of file to be uploaded.
+    # @param parameters [Hash] Optional hash containing parameter names and values.
     def post_file_streaming(api_method, upload_file, content_type, parameters)
       File.open(upload_file) { |file| post_io_streaming(api_method, file, content_type, parameters) }
     end
     
+    # Post a file IO object via HTTP streaming to the Brightcove API, e.g. uploading video. 
+    #
+    # @param api_method [String] Brightcove API method.
+    # @param file [File handle] File handle of file to be uploaded.
+    # @param parameters [Hash] Optional hash containing parameter names and values.
     def post_io_streaming(api_method, file, content_type, parameters)
       parameters.merge!({"token" => @token})
 
@@ -150,5 +174,24 @@ module Brightcove
 
       JSON.parse(response.body)
     end
+
+    private
+
+    # Build an appropriate query for the Brightcove API given an +api_method+ and +options+.
+    # This will also merge in your API token and set the +format+ to XML if +mrss+ has been 
+    # requested for the +:output+.
+    #
+    # @param api_method [String] Brightcove API method.
+    # @param options [Hash] Optional hash containing parameter names and values.
+    def build_query_from_options(api_method, options = {})
+      # normalize options to a hash
+      unless options.respond_to?(:merge!)
+        options = CGI.parse(options)
+      end
+      
+      options.merge!({:command => api_method, :token => @token})
+      options.merge!({:format => :xml}) if options.key?(:output) && 'mrss'.eql?(options[:output])
+      { :query => options }
+    end    
   end
 end

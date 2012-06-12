@@ -50,6 +50,8 @@ response = brightcove.post_file_streaming('create_video', '/path/to/video.mov', 
 => {"result"=>653155417001, "error=>nil, "id"=>nil}
 ```
 
+You can also use the `post_io_streaming(api_method, file, content_type, parameters)` method which takes an I/O handle instead of a filename.
+
 You can now pass `{:output => 'mrss'}` in the __get(...)__ method to return output in Media RSS format. Example:
 
 ```ruby
