@@ -119,4 +119,19 @@ describe Brightcove::API do
       brightcove_response['error'].should be_nil
     end
   end
+
+
+  it 'should allow you to create a video using #post_io_streaming' do
+    VCR.use_cassette('post_file_streaming', :serialize_with => :yaml) do
+      brightcove = Brightcove::API.new('0Z2dtxTdJAxtbZ-d0U7Bhio2V1Rhr5Iafl5FFtDPY8E.')      
+      brightcove_response = File.open(File.join(File.dirname(__FILE__), 'assets', 'movie.mov')) do |file|
+        brightcove.post_io_streaming('create_video', file, 'video/quicktime',
+          :video => {:shortDescription => "Short Description", :name => "Video"})
+      end
+      
+      brightcove_response.should have_key('result')
+      brightcove_response['result'].should == 653155417001
+      brightcove_response['error'].should be_nil
+    end
+  end
 end
