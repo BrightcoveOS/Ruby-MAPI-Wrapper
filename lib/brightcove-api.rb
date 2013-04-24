@@ -162,7 +162,7 @@ module Brightcove
       response = nil
       
       payload[:json] = body.to_json
-      payload[:file] = UploadIO.new(file, content_type)
+      payload[:file] = file.is_a?(UploadIO) ? file : UploadIO.new(file, content_type)
       
       request = Net::HTTP::Post::Multipart.new(url.path, payload)
       
