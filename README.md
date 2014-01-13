@@ -90,4 +90,4 @@ The brightcove-api gem is built and tested under Ruby 1.8.7, 1.9.2 and 1.9.3.
 
 ## Copyright
 
-Copyright (c) 2010-2013 David Czarnecki. See LICENSE for details.
+Copyright (c) 2010-2014 David Czarnecki. See LICENSE for details.
