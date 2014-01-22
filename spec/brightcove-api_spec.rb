@@ -144,8 +144,6 @@ describe Brightcove::API do
                                      :video => {:shortDescription => "Short Description", :name => "Video"})
       end
 
-      puts brightcove_response.inspect
-
       brightcove_response.should have_key('result')
       brightcove_response['result'].should == 3088439142001
       brightcove_response['error'].should be_nil
