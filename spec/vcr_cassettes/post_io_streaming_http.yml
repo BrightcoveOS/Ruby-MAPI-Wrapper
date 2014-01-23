@@ -1,0 +1,112 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://archive.org/download/SummerSFSunset/SummerSFSunset_512kb.mp4
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 302
+      message: Moved Temporarily
+    headers:
+      server:
+      - nginx/1.1.19
+      date:
+      - Wed, 22 Jan 2014 02:08:52 GMT
+      content-type:
+      - video/mp4
+      transfer-encoding:
+      - chunked
+      connection:
+      - keep-alive
+      x-powered-by:
+      - PHP/5.3.10-1ubuntu3.2
+      accept-ranges:
+      - bytes
+      location:
+      - http://ia700500.us.archive.org/11/items/SummerSFSunset/SummerSFSunset_512kb.mp4
+    body:
+      encoding: US-ASCII
+      string: ''
+    http_version: '1.1'
+  recorded_at: Wed, 22 Jan 2014 02:08:52 GMT
+- request:
+    method: get
+    uri: http://ia700500.us.archive.org/11/items/SummerSFSunset/SummerSFSunset_512kb.mp4
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      server:
+      - nginx/1.1.19
+      date:
+      - Wed, 22 Jan 2014 02:08:52 GMT
+      content-type:
+      - video/mp4
+      content-length:
+      - '1378120'
+      last-modified:
+      - Sun, 30 Nov 2008 02:00:01 GMT
+      connection:
+      - keep-alive
+      expires:
+      - Wed, 22 Jan 2014 08:08:52 GMT
+      cache-control:
+      - max-age=21600
+      accept-ranges:
+      - bytes
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    http_version: '1.1'
+  recorded_at: Wed, 22 Jan 2014 02:08:53 GMT
+- request:
+    method: post
+    uri: http://api.brightcove.com/services/post
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+      content-type:
+      - multipart/form-data; boundary=-----------RubyMultipartPost
+      content-length:
+      - '1378607'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json;charset=UTF-8
+      content-length:
+      - '52'
+      date:
+      - Wed, 22 Jan 2014 02:08:55 GMT
+      server:
+      - brightcove
+    body:
+      encoding: US-ASCII
+      string: ! '{"result": 3088439142001, "error": null, "id": null}'
+    http_version: '1.1'
+  recorded_at: Wed, 22 Jan 2014 02:08:56 GMT
+recorded_with: VCR 2.8.0

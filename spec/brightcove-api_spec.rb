@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'open-uri'
 
 describe Brightcove::API do
   it 'should be the correct version' do
@@ -131,6 +132,20 @@ describe Brightcove::API do
 
       brightcove_response.should have_key('result')
       brightcove_response['result'].should == 653155417001
+      brightcove_response['error'].should be_nil
+    end
+  end
+
+  it 'should allow you to create a video using #post_io_streaming with an HTTP source' do
+    VCR.use_cassette('post_io_streaming_http', :serialize_with => :yaml) do
+      brightcove = Brightcove::API.new('ZY4Ls9Hq6LCBgleGDTaFRDLWWBC8uoXQHkhGuDebKvjFPjHb3iT-4g..')
+      brightcove_response = open('http://archive.org/download/SummerSFSunset/SummerSFSunset_512kb.mp4') do |file|
+        brightcove.post_io_streaming('create_video', file, 'video/mp4',
+                                     :video => {:shortDescription => "Short Description", :name => "Video"})
+      end
+
+      brightcove_response.should have_key('result')
+      brightcove_response['result'].should == 3088439142001
       brightcove_response['error'].should be_nil
     end
   end
