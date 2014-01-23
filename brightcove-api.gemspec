@@ -24,7 +24,9 @@ Gem::Specification.new do |s|
   s.add_dependency('json')
   s.add_dependency('rest-client')
   s.add_dependency('multipart-post')
-  s.add_dependency('orderedhash')
+  if RUBY_VERSION < '1.9'
+    s.add_dependency('orderedhash')
+  end
 
   s.add_development_dependency('fakeweb')
   s.add_development_dependency('mocha')
