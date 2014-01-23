@@ -11,6 +11,7 @@ Gem::Specification.new do |s|
   s.homepage    = "http://github.com/BrightcoveOS/Ruby-MAPI-Wrapper"
   s.summary     = %q{Ruby gem for interacting with the Brightcove media API}
   s.description = %q{Ruby gem for interacting with the Brightcove media API. http://docs.brightcove.com/en/media/}
+  s.license     = 'MIT'
 
   s.rubyforge_project = "brightcove-api"
 
@@ -24,7 +25,7 @@ Gem::Specification.new do |s|
   s.add_dependency('rest-client')
   s.add_dependency('multipart-post')
   s.add_dependency('orderedhash')
-  
+
   s.add_development_dependency('fakeweb')
   s.add_development_dependency('mocha')
   s.add_development_dependency('rake')
