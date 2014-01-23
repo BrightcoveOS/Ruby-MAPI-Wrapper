@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.15 (2014-01-22)
+
+* Make orderedhash dependency optional for non-Ruby 1.8.7 versions. [#12](https://github.com/BrightcoveOS/Ruby-MAPI-Wrapper/issues/12)
+
 ## 1.0.14 (2014-01-22)
 
 * Handle IO streams provided by open-uri in post_io_streaming. [#11](https://github.com/BrightcoveOS/Ruby-MAPI-Wrapper/pull/11). Thanks @robdiciuccio.
