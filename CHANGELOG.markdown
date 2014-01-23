@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.14 (2014-01-22)
+
+* Handle IO streams provided by open-uri in post_io_streaming. [#11](https://github.com/BrightcoveOS/Ruby-MAPI-Wrapper/pull/11). Thanks @robdiciuccio.
+
 ## 1.0.13 (2013-04-24)
 
 * Allow an UploadIO object to be passed in to post_io_streaming Thanks @icebreaker
