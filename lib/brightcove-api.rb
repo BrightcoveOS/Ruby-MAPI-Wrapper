@@ -18,8 +18,8 @@ module Brightcove
 
     headers(DEFAULT_HEADERS)
 
-    READ_API_URL = 'http://api.brightcove.com/services/library'
-    WRITE_API_URL = 'http://api.brightcove.com/services/post'
+    READ_API_URL = 'https://api.brightcove.com/services/library'
+    WRITE_API_URL = 'https://api.brightcove.com/services/post'
 
     attr_accessor :read_api_url
     attr_accessor :write_api_url
