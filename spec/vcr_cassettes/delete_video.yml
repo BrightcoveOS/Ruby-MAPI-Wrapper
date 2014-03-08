@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://api.brightcove.com/services/post
+    uri: https://api.brightcove.com/services/post
     body:
       encoding: US-ASCII
       string: json=%7B%22method%22%3A%22delete_video%22%2C%22params%22%3A%7B%22video_id%22%3A%22595153261337%22%2C%22token%22%3A%220Z2dtxTdJAxtbZ-d0U7Bhio2V1Rhr5Iafl5FFtDPY8E.%22%7D%7D

@@ -3,7 +3,7 @@ require 'open-uri'
 
 describe Brightcove::API do
   it 'should be the correct version' do
-    Brightcove::API::VERSION.should == '1.0.15'
+    Brightcove::API::VERSION.should == '1.0.16'
   end
 
   it 'should allow you to set new HTTP headers' do

@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.16 (2014-03-07)
+
+* Use https URLs [#14](https://github.com/BrightcoveOS/Ruby-MAPI-Wrapper/pull/14)
+
 ## 1.0.15 (2014-01-22)
 
 * Make orderedhash dependency optional for non-Ruby 1.8.7 versions. [#12](https://github.com/BrightcoveOS/Ruby-MAPI-Wrapper/issues/12)

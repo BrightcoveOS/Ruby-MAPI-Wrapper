@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
     s.add_dependency('orderedhash')
   end
 
+  s.add_development_dependency('multi_json')
   s.add_development_dependency('fakeweb')
   s.add_development_dependency('mocha')
   s.add_development_dependency('rake')

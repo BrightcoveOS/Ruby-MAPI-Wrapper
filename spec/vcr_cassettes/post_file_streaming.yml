@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://api.brightcove.com/services/post
+    uri: http://api.brightcove.com:443/services/post
     body:
       encoding: US-ASCII
       string: ''
