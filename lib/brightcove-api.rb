@@ -57,14 +57,14 @@ module Brightcove
     # @param http_headers [Hash] Updated HTTP headers.
     def set_http_headers(http_headers = {})
       http_headers.merge!(DEFAULT_HEADERS)
-      headers(http_headers)
+      self.class.headers(http_headers)
     end
 
     # Set a timeout for HTTP requests.
     #
     # @param timeout [int] HTTP timeout value.
     def set_timeout(timeout)
-      default_timeout(timeout)
+      self.class.default_timeout(timeout)
     end
 
     # Make an HTTP GET call to the Brightcove API for a particular API method.

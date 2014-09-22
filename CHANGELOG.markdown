@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.17 (2014-09-22)
+
+* Fix call to set timeout and HTTP headers. Fixes #15.
+
 ## 1.0.16 (2014-03-07)
 
 * Use https URLs [#14](https://github.com/BrightcoveOS/Ruby-MAPI-Wrapper/pull/14)

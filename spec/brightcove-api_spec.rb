@@ -3,19 +3,19 @@ require 'open-uri'
 
 describe Brightcove::API do
   it 'should be the correct version' do
-    Brightcove::API::VERSION.should == '1.0.16'
+    Brightcove::API::VERSION.should == '1.0.17'
   end
 
   it 'should allow you to set new HTTP headers' do
     brightcove = Brightcove::API.new('apikeytoken')
-    brightcove.expects(:headers).at_least_once
+    Brightcove::API.expects(:headers).at_least_once
 
     brightcove.set_http_headers({'Accept' => 'application/json'})
   end
 
   it 'should allow you to set a new default timeout' do
     brightcove = Brightcove::API.new('apikeytoken')
-    brightcove.expects(:default_timeout).at_least_once
+    Brightcove::API.expects(:default_timeout).at_least_once
 
     brightcove.set_timeout(5)
   end
