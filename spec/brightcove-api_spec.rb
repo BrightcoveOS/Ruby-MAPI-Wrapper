@@ -3,7 +3,7 @@ require 'open-uri'
 
 describe Brightcove::API do
   it 'should be the correct version' do
-    Brightcove::API::VERSION.should == '1.0.17'
+    expect(Brightcove::API::VERSION).to eq('1.0.17')
   end
 
   it 'should allow you to set new HTTP headers' do
@@ -25,8 +25,8 @@ describe Brightcove::API do
       brightcove = Brightcove::API.new('0Z2dtxTdJAxtbZ-d0U7Bhio2V1Rhr5Iafl5FFtDPY8E.')
       brightcove_response = brightcove.get('find_all_videos', {:page_size => 5})
 
-      brightcove_response['items'].size.should == 5
-      brightcove_response['page_number'].should == 0
+      expect(brightcove_response['items'].size).to eq(5)
+      expect(brightcove_response['page_number']).to eq(0)
     end
   end
 
@@ -35,7 +35,7 @@ describe Brightcove::API do
       brightcove = Brightcove::API.new('0Z2dtxTdJAxtbZ-d0U7Bhio2V1Rhr5Iafl5FFtDPY8E.')
       brightcove_response = brightcove.get('find_all_videos', {:output => 'mrss'})
 
-      brightcove_response['rss']['channel']['item'].size.should == 85
+      expect(brightcove_response['rss']['channel']['item'].size).to eq(85)
     end
   end
 
@@ -81,7 +81,7 @@ describe Brightcove::API do
         :all => ["football", "chicago", "tag:free"]
       })
 
-      brightcove_response['items'].size.should == 0
+      expect(brightcove_response['items'].size).to eq(0)
     end
   end
 
@@ -90,8 +90,8 @@ describe Brightcove::API do
       brightcove = Brightcove::API.new('0Z2dtxTdJAxtbZ-d0U7Bhio2V1Rhr5Iafl5FFtDPY8E.')
       brightcove_response = brightcove.post('delete_video', {:video_id => '595153261337'})
 
-      brightcove_response.should have_key('result')
-      brightcove_response['error'].should be_nil
+      expect(brightcove_response).to have_key('result')
+      expect(brightcove_response['error']).to be_nil
     end
   end
 
@@ -102,9 +102,9 @@ describe Brightcove::API do
         File.join(File.dirname(__FILE__), 'assets', 'movie.mov'),
         :video => {:shortDescription => "Short Description", :name => "Video"})
 
-      brightcove_response.should have_key('result')
-      brightcove_response['result'].should == 653155417001
-      brightcove_response['error'].should be_nil
+      expect(brightcove_response).to have_key('result')
+      expect(brightcove_response['result']).to eq(653155417001)
+      expect(brightcove_response['error']).to be_nil
     end
   end
 
@@ -115,9 +115,9 @@ describe Brightcove::API do
         File.join(File.dirname(__FILE__), 'assets', 'movie.mov'), 'video/quicktime',
         :video => {:shortDescription => "Short Description", :name => "Video"})
 
-      brightcove_response.should have_key('result')
-      brightcove_response['result'].should == 653155417001
-      brightcove_response['error'].should be_nil
+      expect(brightcove_response).to have_key('result')
+      expect(brightcove_response['result']).to eq(653155417001)
+      expect(brightcove_response['error']).to be_nil
     end
   end
 
@@ -130,9 +130,9 @@ describe Brightcove::API do
           :video => {:shortDescription => "Short Description", :name => "Video"})
       end
 
-      brightcove_response.should have_key('result')
-      brightcove_response['result'].should == 653155417001
-      brightcove_response['error'].should be_nil
+      expect(brightcove_response).to have_key('result')
+      expect(brightcove_response['result']).to eq(653155417001)
+      expect(brightcove_response['error']).to be_nil
     end
   end
 
@@ -144,9 +144,9 @@ describe Brightcove::API do
                                      :video => {:shortDescription => "Short Description", :name => "Video"})
       end
 
-      brightcove_response.should have_key('result')
-      brightcove_response['result'].should == 3088439142001
-      brightcove_response['error'].should be_nil
+      expect(brightcove_response).to have_key('result')
+      expect(brightcove_response['result']).to eq(3088439142001)
+      expect(brightcove_response['error']).to be_nil
     end
   end
 end
