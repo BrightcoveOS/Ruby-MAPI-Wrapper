@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.18 (2015-03-25)
+
+* Use ssl for streaming api [#16](https://github.com/BrightcoveOS/Ruby-MAPI-Wrapper/pull/16)
+
 ## 1.0.17 (2014-09-22)
 
 * Fix call to set timeout and HTTP headers. Fixes #15.

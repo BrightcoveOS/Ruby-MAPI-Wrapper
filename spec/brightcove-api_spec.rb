@@ -3,7 +3,7 @@ require 'open-uri'
 
 describe Brightcove::API do
   it 'should be the correct version' do
-    expect(Brightcove::API::VERSION).to eq('1.0.17')
+    expect(Brightcove::API::VERSION).to eq('1.0.18')
   end
 
   it 'should allow you to set new HTTP headers' do

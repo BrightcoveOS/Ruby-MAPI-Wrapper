@@ -78,7 +78,7 @@ http_interactions:
   recorded_at: Wed, 22 Jan 2014 02:08:53 GMT
 - request:
     method: post
-    uri: http://api.brightcove.com:443/services/post
+    uri: https://api.brightcove.com/services/post
     body:
       encoding: US-ASCII
       string: ''
