@@ -1,6 +1,6 @@
 # brightcove-api
 
-Ruby gem for interacting with the Brightcove media API. http://docs.brightcove.com/en/media/
+Ruby gem for interacting with the Brightcove media API. http://docs.brightcove.com/en/video-cloud/media/
 
 ## Requirements
 
