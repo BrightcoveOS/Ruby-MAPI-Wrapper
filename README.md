@@ -1,6 +1,6 @@
-# brightcove-api
+**DEPRECATION NOTICE:** Please note that because the [Brightcove Media API](https://support.brightcove.com/en/service-changes) is now deprecated, you should **NOT** use this library for development.
 
-**WARNING:** The Media API is deprecated and should not be used for new projects. [More information](https://support.brightcove.com/en/service-changes).
+# brightcove-api
 
 Ruby gem for interacting with the Brightcove media API. http://docs.brightcove.com/en/video-cloud/media/
 
