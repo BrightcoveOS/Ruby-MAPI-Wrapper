@@ -1,4 +1,4 @@
-**DEPRECATION NOTICE:** Please note that because the [Brightcove Media API](https://support.brightcove.com/en/service-changes) is now deprecated, you should **NOT** use this library for development.
+**DEPRECATION NOTICE:** Please note that because the [Brightcove Media API](https://support.brightcove.com/changes-video-cloud-service) is now deprecated, you should **NOT** use this library for development.
 
 # brightcove-api
 
